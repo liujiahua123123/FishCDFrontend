@@ -1,5 +1,21 @@
 <script setup lang="ts">
-
+const props = defineProps({
+  num: {
+    type: Number,
+    required: true,
+  },
+  producer: {
+    type: Object,
+    required: true,
+    default: () => ({
+      img: '',
+      title: '',
+      description: '',
+      buttons: [],
+      tags: [],
+    }),
+  },
+});
 </script>
 
 <template>
@@ -9,9 +25,9 @@
         <v-row no-gutters class="pa-3">
           <v-col cols="12">
             <v-chip rounded="0" color="primary">
-              1
+              {{num}}
             </v-chip>
-            <span class="title px-2" >bilibili P</span>
+            <span class="title px-2" >{{ props.producer.title }}</span>
           </v-col>
           <v-col cols="12">
             <v-col cols="12" class="ma-0 pa-0 mb-2" style="text-align:center">
@@ -20,8 +36,8 @@
           </v-col>
           <v-col cols="12" sm="4">
             <v-img
-              src="https://imagedelivery.net/CRHKaup6UVEaPqVojXiGNg/b8b9f023-aeaa-4988-002e-7cacb61ae800/small"
-              alt="bilibiliGoods Image"
+              :src="props.producer.img"
+              alt="Image"
               class="align-center rounded-lg"
             ></v-img>
           </v-col>
@@ -30,31 +46,22 @@
               <v-row pa="0">
                 <v-col cols="12" class="pb-1">
                   <p>
-                    「bilibiliP」は「bilibili」傘下のグッズブランドです。bilibiliGoodsブースではUWAシリーズ痛バッグやぬいぐるみキーホルダーなど、初音ミクたちのさまざまな新商品を販売いたします。ぜひお立ち寄りください。
+                    {{props.producer.description}}
                   </p>
                 </v-col>
                 <v-col cols="12" class="my-0 py-1">
-                  <v-chip class="rounded-sm mr-2" color="red">2027/07/31</v-chip>
-                  <v-chip class="rounded-sm mr-2" color="white">2027/07/32</v-chip>
+                  <v-chip class="rounded-sm mr-2" :color="tag.color" v-for="tag in props.producer.tags">{{ tag.text }}</v-chip>
                 </v-col>
                 <v-col cols="12"  class="my-0 py-1">
                   <v-btn
-                    color="primary"
-                    href="https://twitter.com/bilibiliGoods"
+                    :href="button.link"
                     target="_blank"
                     variant="outlined"
                     class="mr-2"
+                    :color="button.color"
+                    v-for="button in props.producer.buttons"
                   >
-                    公式X
-                  </v-btn>
-                  <v-btn
-                    color="primary"
-                    href="https://twitter.com/bilibiliGoods"
-                    target="_blank"
-                    variant="outlined"
-                    class="mr-2"
-                  >
-                    CD LIST
+                    {{button.text}}
                   </v-btn>
                 </v-col>
               </v-row>

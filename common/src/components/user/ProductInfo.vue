@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 
 const props = defineProps({
-  cd: {
+  product: {
     type: Object,
     required: true,
     default: () => ({
@@ -33,7 +33,7 @@ const props = defineProps({
             :aspect-ratio="1"
             block
             cover
-            :src="props.cd.img"
+            :src="props.product.img"
           >
             <template #placeholder>
               <v-skeleton-loader style="width: 100%; height: 100%" />
@@ -51,10 +51,10 @@ const props = defineProps({
       </v-hover>
 
       <div class="pa-3">
-        <p class="text-body-1">{{ props.cd.title }}</p>
-        <p class="text-caption font-italic">{{ props.cd.description }}</p>
-        <p class="text-body-2 text-medium-emphasis mt-1">{{ props.cd.subtitle }}</p>
-        <p class="font-weight-bold text-body-2 mt-1">¥{{ props.cd.price }}</p>
+        <p class="text-body-1">{{ props.product.title }}</p>
+        <p class="text-caption font-italic">{{ props.product.description }}</p>
+        <p class="text-body-2 text-medium-emphasis mt-1">{{ props.product.subtitle }}</p>
+        <p class="font-weight-bold text-body-2 mt-1">¥{{ props.product.price }}</p>
 
         <v-chip
           class="text-none mr-2"

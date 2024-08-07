@@ -5,20 +5,20 @@
       <v-main scrollable>
         <v-container class="pa-md-12 pa-6" fluid>
           <v-row>
-            <cd-info v-for="product in products" :key="product.title" :cd="product"></cd-info>
+            <product-info v-for="product in products" :key="product.title" :product="product"></product-info>
           </v-row>
         </v-container>
       </v-main>
-      <c-footer></c-footer>
+      <fish-footer></fish-footer>
     </v-layout>
   </v-app>
 </template>
 <script>
 </script>
 <script setup lang="ts">
-import Navigation from "@/components/Navigation.vue";
-import CFooter from "@/components/FishFooter.vue";
-import CdInfo from "@/components/ProductInfo.vue";
+import Navigation from "@/components/layout/FishNavigation.vue";
+import FishFooter from "@/components/layout/FishFooter.vue";
+import ProductInfo from "@/components/user/ProductInfo.vue";
 const products = [
   {
     title: 'CD 1',
